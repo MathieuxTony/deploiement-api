@@ -18,6 +18,8 @@ multilabel = MultiLabelBinarizer()
 y = multilabel.fit_transform(data['Tags'])
 y = pd.DataFrame(y, columns=multilabel.classes_)
 
+df_labels = pd.DataFrame(columns=multilabel.classes_)
+df_labels.to_csv('label_pred.csv', index=False)
 
 # grille d'hyperparamètres
 param_grid = {'C': [0.5, 1, 2, 5]}
