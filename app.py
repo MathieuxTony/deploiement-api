@@ -1,9 +1,9 @@
 import pandas as pd
 import streamlit as st
 from joblib import load
-from model.mes_fonctions import *
+from mes_fonctions import *
 
-labels = pd.read_csv('model/label_pred.csv')
+labels = pd.read_csv('label_pred.csv')
 def get_label(pred):
     df = pd.DataFrame(pred, columns=labels.columns.values)
     y = df.replace(0, float("NaN")).dropna(how='all', axis=1).columns.values.tolist()
@@ -23,7 +23,7 @@ def user_input_features():
 
 df = user_input_features()
 
-clf = load('model/mon_model.joblib')
+clf = load('mon_model.joblib')
 
 prediction = clf.predict(df)
 
